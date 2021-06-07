@@ -8,12 +8,12 @@ class Entity:
         self.image_url = ""
         self.source = ""
         self.source_signature = ""
-        self.source_date = datetime.now()
+        self.source_date = "2006-01-02T15:04:05-07:00"
         self.attributes = {}
         self.links = []
         self.categories = []
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+        self.created_at = "2006-01-02T15:04:05-07:00"
+        self.updated_at = "2006-01-02T15:04:05-07:00"
         self.snippet = ""
         self.search_text = ""
 
@@ -35,5 +35,5 @@ class Value:
         self.value_type = ""
         self.value_string = ""
         self.source = ""
-        self.date = datetime.now()
-        self.updated_at = datetime.now()
+        self.date = "2006-01-02T15:04:05-07:00"
+        self.updated_at = "2006-01-02T15:04:05-07:00"
