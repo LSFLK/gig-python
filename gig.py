@@ -2,7 +2,7 @@ import requests, json
 from types import SimpleNamespace
 
 
-class gig:
+class Server:
     def __init__(self, server_url, timeout=30):
         self.server_url = server_url
         self.time_out = timeout

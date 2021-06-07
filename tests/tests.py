@@ -1,6 +1,6 @@
-from gig import gig
+from gig import Server as GIG_Server
 
-server = gig("http://localhost:9000/")
+server = GIG_Server("http://localhost:9000/")
 
 
 def test_get():
