@@ -1,3 +1,6 @@
 
 .idea/
 venv/
+.eggs/
+.pytest_cache
+gig_python.egg-info
