@@ -31,7 +31,3 @@ def test_get_relations():
 def test_search():
     entities = server.search("Sri Lanka", attributes_list=["title"])
     assert len(entities) > 0
-
-
-test_normalize_location()
-test_normalize_name()
