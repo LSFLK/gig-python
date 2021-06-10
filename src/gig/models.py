@@ -1,6 +1,3 @@
-from datetime import datetime
-
-
 class Entity:
     def __init__(self):
         self.id = None

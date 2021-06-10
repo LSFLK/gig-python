@@ -5,3 +5,5 @@ venv/
 .pytest_cache
 gig_python.egg-info
 __pycache__/
+build/
+dist/

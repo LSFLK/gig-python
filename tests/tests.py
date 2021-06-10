@@ -1,5 +1,5 @@
-from gig import Server as GIG_Server
-from models import Entity
+from src.gig.gig import Server as GIG_Server
+from src.gig.models import Entity
 
 server = GIG_Server("http://localhost:9000/")
 
