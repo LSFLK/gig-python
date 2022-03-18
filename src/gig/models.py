@@ -1,3 +1,6 @@
+REFERENCE_DATE = "2006-01-02T15:04:05-07:00"
+
+
 class Entity:
     def __init__(self):
         self.id = None
@@ -5,12 +8,12 @@ class Entity:
         self.image_url = ""
         self.source = ""
         self.source_signature = ""
-        self.source_date = "2006-01-02T15:04:05-07:00"
+        self.source_date = REFERENCE_DATE
         self.attributes = {}
         self.links = []
         self.categories = []
-        self.created_at = "2006-01-02T15:04:05-07:00"
-        self.updated_at = "2006-01-02T15:04:05-07:00"
+        self.created_at = REFERENCE_DATE
+        self.updated_at = REFERENCE_DATE
         self.snippet = ""
         self.search_text = ""
 
@@ -32,5 +35,5 @@ class Value:
         self.value_type = ""
         self.value_string = ""
         self.source = ""
-        self.date = "2006-01-02T15:04:05-07:00"
-        self.updated_at = "2006-01-02T15:04:05-07:00"
+        self.date = REFERENCE_DATE
+        self.updated_at = REFERENCE_DATE

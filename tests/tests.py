@@ -2,16 +2,17 @@ from src.gig.gig import Server as GIG_Server
 from src.gig.models import Entity
 
 server = GIG_Server("http://localhost:9000/")
+SRI_LANKA = "Sri Lanka"
 
 
 def test_get():
-    entity = server.get("Sri Lanka")
-    assert entity.title == "Sri Lanka"
+    entity = server.get(SRI_LANKA)
+    assert entity.title == SRI_LANKA
 
 
 def test_normalize_name():
     results = server.normalize_name("sri lanka")
-    assert "Sri Lanka" in results
+    assert SRI_LANKA in results
 
 
 def test_normalize_location():
@@ -20,17 +21,17 @@ def test_normalize_location():
 
 
 def test_get_links():
-    entities = server.get_links("Sri Lanka")
+    entities = server.get_links(SRI_LANKA)
     assert len(entities) > 0
 
 
 def test_get_relations():
-    entities = server.get_relations("Sri Lanka")
+    entities = server.get_relations(SRI_LANKA)
     assert len(entities) > 0
 
 
 def test_search():
-    entities = server.search("Sri Lanka", attributes_list=["title"])
+    entities = server.search(SRI_LANKA, attributes_list=["title"])
     assert len(entities) > 0
 
 

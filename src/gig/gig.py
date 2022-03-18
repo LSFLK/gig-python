@@ -1,6 +1,9 @@
 import requests, json
 from types import SimpleNamespace
 
+NOT_FOUND_ERROR = 'No entity found'
+ENTITY_CREATION_ERROR = 'Entity creation error'
+
 
 class Server:
     def __init__(self, server_url, timeout=30):
@@ -16,18 +19,18 @@ class Server:
         response = requests.post(self.server_url + f'api/add', json=entity.__dict__)
 
         if response.status_code not in [200, 202]:
-            raise SystemError('Entity creation error', json.loads(response.content))
+            raise SystemError(ENTITY_CREATION_ERROR, json.loads(response.content))
         return response.status_code
 
     def add_all(self, entities):
-        serialized=[]
+        serialized = []
         for entity in entities:
             serialized.append(entity.__dict__)
 
         response = requests.post(self.server_url + f'api/add-batch', json=serialized)
         print(response.status_code)
         if response.status_code not in [200, 202]:
-            raise SystemError('Entity creation error', json.loads(response.content))
+            raise SystemError(ENTITY_CREATION_ERROR, json.loads(response.content))
         return response.status_code
 
     def terminate(self, entity):
@@ -43,7 +46,7 @@ class Server:
                                 timeout=self.time_out)
 
         if response.status_code != 200:
-            raise FileNotFoundError('No entity found', json.loads(response.content))
+            raise FileNotFoundError(NOT_FOUND_ERROR, json.loads(response.content))
         return json.loads(response.content, object_hook=lambda d: SimpleNamespace(**d))
 
     def get_links(self, title, attributes_list=None, page=None, limit=10):
@@ -51,7 +54,7 @@ class Server:
                                 params={"page": page, "attributes": attributes_list, "limit": limit},
                                 timeout=self.time_out)
         if response.status_code != 200:
-            raise FileNotFoundError('No entity found', json.loads(response.content))
+            raise FileNotFoundError(NOT_FOUND_ERROR, json.loads(response.content))
         result = json.loads(response.content, object_hook=lambda d: SimpleNamespace(**d))
         if result is None:
             raise FileNotFoundError('No links found', json.loads(response.content))
@@ -62,7 +65,7 @@ class Server:
                                 params={"page": page, "attributes": ','.join(attributes_list), "limit": limit},
                                 timeout=self.time_out)
         if response.status_code != 200:
-            raise FileNotFoundError('No entity found', json.loads(response.content))
+            raise FileNotFoundError(NOT_FOUND_ERROR, json.loads(response.content))
         result = json.loads(response.content, object_hook=lambda d: SimpleNamespace(**d))
         if result is None:
             raise FileNotFoundError('No related entities found')
@@ -74,7 +77,7 @@ class Server:
                                         "categories": ','.join(category_list), "limit": limit},
                                 timeout=self.time_out)
         if response.status_code != 200:
-            raise FileNotFoundError('No entity found', json.loads(response.content))
+            raise FileNotFoundError(NOT_FOUND_ERROR, json.loads(response.content))
         result = json.loads(response.content, object_hook=lambda d: SimpleNamespace(**d))
         if result is None:
             raise FileNotFoundError('No related entities found', json.loads(response.content))
