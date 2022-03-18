@@ -15,7 +15,7 @@ def test_normalize_name():
 
 
 def test_normalize_location():
-    results = server.normalize_name("colombo")
+    results = server.normalize_location("colombo")
     assert "Colombo" in results
 
 
@@ -25,7 +25,7 @@ def test_get_links():
 
 
 def test_get_relations():
-    entities = server.get_links("Sri Lanka")
+    entities = server.get_relations("Sri Lanka")
     assert len(entities) > 0
 
 
